@@ -1,0 +1,41 @@
+<!-- The word uppercase in the interpolation binding, right after the pipe operator ( | ), activates the built-in UppercasePipe. -->
+<!-- <h2>{{ hero.name | uppercase}} Details</h2>
+<div><span>id: </span>{{hero.id}}</div>
+<div>
+  <label>name: -->
+      <!-- [(ngModel)] is Angular's two-way data binding syntax. -->
+    <!-- <input [(ngModel)]="hero.name" placeholder="name"> -->
+    <!-- Here it binds the hero.name property to the HTML textbox
+      so that data can flow in both directions:
+      from the hero.name property to the textbox,
+      and from the textbox back to the hero.name. -->
+    <!-- ngModel is a valid Angular directive but isn't available by default. -->
+    <!-- It belongs to the optional FormsModule -->
+  <!-- </label>
+</div> -->
+
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <!-- <li *ngFor="let hero of heroes"> -->
+    <!-- The *ngFor is Angular's repeater directive. It repeats the host element for each element in a list. -->
+
+    <li *ngFor="let hero of heroes">
+    <!-- [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)"> -->
+    <!-- The Angular class binding makes it easy to add and remove a CSS class conditionally -->
+    <!-- The parentheses around click tell Angular to listen for the <li> element's click event.
+      When the user clicks in the <li>, Angular executes the onSelect(hero) expression. -->
+    <!-- onSelect() is a HeroesComponent method that you're about to write.
+      Angular calls it with the hero object displayed in the clicked <li>,
+      the same hero defined previously in the *ngFor expression. -->
+      <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </a>
+  </li>
+</ul>
+
+<!-- The HeroDetailComponent selector is 'app-hero-detail'. Add an <app-hero-detail> element near the bottom of the HeroesComponent template, where the hero detail view used to be. -->
+<!-- Bind the HeroesComponent.selectedHero to the element's hero property like this. -->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<!-- [hero]="selectedHero" is an Angular property binding. -->
+
